@@ -1,0 +1,27 @@
+{
+    "name": "bell-docsify",
+    "version": "1.0.0",
+    "description": "bell-docsify",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/angeltiva/bell-docsify.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/angeltiva/bell-docsify/issues"
+    },
+    "homepage": "https://github.com/angeltiva/bell-docsify#readme",
+    "edp": {
+        "wwwroot": "/",
+        "depDir": "dep",
+        "srcDir": "src",
+        "loaderAutoConfig": "js,htm,html,tpl,vm,phtml",
+        "loaderUrl": "http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js",
+        "dependencies": {}
+    }
+}

@@ -6,17 +6,39 @@ define(function (require, exports, module) {
 
     'use strict';
 
-    exports.init = function () {
+    exports.init = function (data) {
 
         new Yox({
             el: '#app',
             template: require('tpl!./main.html'),
+            replace: true,
+            data: function () {
+                return {
+                    style: require('tpl!./main.css'),
+                    temp: {
+                        jsResources: './dep/main.js',
+                        cssResources: './dep/main.css',
+                        code: `
+<script>
+    export default {
+        template: \`
+            <div>
+                <Alert>An info prompt</Alert>
+                <Alert type="success">A success prompt</Alert>
+                <Alert type="warning">A warning prompt</Alert>
+                <Alert type="error">An error prompt</Alert>
 
-            data: {
-                temp: {
-                    js: 'https://raw.githubusercontent.com/angeltiva/bellUI/master/src/main.js',
-                    css: 'https://raw.githubusercontent.com/angeltiva/bellUI/master/src/main.css',
-                    code: '<Alert>An info prompt</Alert>'
+                <style>
+                    {{style}}
+                </style>
+            </div>
+        \`,
+        data: {
+            style: '.bell-alert{ margin: 10px; }'
+        }
+    }
+</script>`
+                    }
                 }
             },
 

@@ -6636,7 +6636,7 @@ var prototype = Yox.prototype;
 // 全局注册
 
 var registry = {};
-
+window.registry = registry;
 var COMPONENT = 'component';
 
 function getResourceAsync(data, name, callback) {

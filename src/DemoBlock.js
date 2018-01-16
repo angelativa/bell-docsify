@@ -1,13 +1,9 @@
-(function (global, factory) {
-    (factory());
-}(this, (function () { 'use strict';
-
 /**
  * @file demo
  * @author wangtianhua
  */
 
-var DemoBlockWrapper = {
+export default {
 
     template: `
 <div class="bell-view-box">
@@ -18,7 +14,7 @@ var DemoBlockWrapper = {
         </span>
     </div>
 
-    <div class="bell-view">
+    <div class="bell-view bell-view-{{number}}">
 
     </div>
 
@@ -41,14 +37,18 @@ var DemoBlockWrapper = {
     propTypes: {
         code: {
             type: 'string'
+        },
+        number: {
+            type: ['string', 'number']
         }
     },
 
     data: function () {
+        var me = this;
         return {
             source: '',
             isOpen: false
-        };
+        }
     },
 
     methods: {
@@ -56,7 +56,6 @@ var DemoBlockWrapper = {
             code = code.replace(/<\/?script>/g, '').trim();
             code = code.replace(/export\s*default/g, '').trim();
             code = new Function('return ' + code)();
-            code.el = '.bell-view';
             return code;
         },
         open: function () {
@@ -77,16 +76,17 @@ var DemoBlockWrapper = {
         },
         goJsfiddle: function () {
             var me = this;
+            var script = '';
             var html = '';
             var style = ['12'];
             var jsTpl = me.get('code');
 
             const data = {
-                js: jsTpl,
-                css: style,
-                html: html,
-                panel_js: 3,
-                panel_css: 1
+              js: jsTpl,
+              css: style,
+              html: html,
+              panel_js: 3,
+              panel_css: 1
             };
 
             const form = document.getElementById('fiddle-form') || document.createElement('form');
@@ -98,9 +98,9 @@ var DemoBlockWrapper = {
             form.target = '_blank';
 
             for (let name in data) {
-                node.name = name;
-                node.value = data[name].toString();
-                form.appendChild(node.cloneNode());
+              node.name = name;
+              node.value = data[name].toString();
+              form.appendChild(node.cloneNode());
             }
             form.setAttribute('id', 'fiddle-form');
             form.style.display = 'none';
@@ -117,13 +117,8 @@ var DemoBlockWrapper = {
         me.set({
             source: source.value
         });
-
-        new Yox(me.formatCode(code));
+        var html = me.formatCode(code);
+        html.el = '.bell-view-' + me.get('number');
+        new Yox(html);
     }
-};
-
-Yox.component({
-    DemoBlockWrapper
-});
-
-})));
+}

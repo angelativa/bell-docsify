@@ -1,6 +1,6 @@
 {
     "name": "bell-docsify",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "bell-docsify",
     "entry": "index.js",
     "scripts": {

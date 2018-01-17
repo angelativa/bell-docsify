@@ -1,2 +1,0 @@
-# bell-docsify
-bell-docsify

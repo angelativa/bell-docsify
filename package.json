@@ -2,7 +2,7 @@
     "name": "bell-docsify",
     "version": "1.0.0",
     "description": "bell-docsify",
-    "main": "index.js",
+    "entry": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },

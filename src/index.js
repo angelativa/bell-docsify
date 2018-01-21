@@ -2,8 +2,22 @@ import DemoBlock from './DemoBlock'
 Yox.component({
     DemoBlock
 });
-
+let hashMap = {};
 export let demoCreate = function (code) {
+    window.addEventListener(
+        'hashchange',
+        function () {
+            setTimeout(function () {
+                var map = hashMap[location.hash];
+                if (map) {
+                    for (var i = 0; i < map.length; i++) {
+                        new Yox(map[i]);
+                    }
+                }
+            }, 500);
+        }
+    );
+
     return function (hook, vm) {
         let id = 0;
         window.$docsify.markdown = {
@@ -13,7 +27,10 @@ export let demoCreate = function (code) {
                     var create = function (number, code) {
                         setTimeout(
                             function () {
-                                new Yox({
+                                if (!hashMap[location.hash]) {
+                                    hashMap[location.hash] = [];
+                                }
+                                var str = {
                                     el: '#demo' + number,
                                     template: `
                                         <div class="bell-demo-wrapper">
@@ -29,12 +46,14 @@ export let demoCreate = function (code) {
                                             number: number
                                         }
                                     }
-                                });
+                                };
+                                new Yox(str);
+                                hashMap[location.hash].push(str);
                             },
                             500
                         );
                     }
-                    create(id, code);
+                    var a = create(id, code);
                     return '<div id="demo' + id + '"></div>';
                 }
             }

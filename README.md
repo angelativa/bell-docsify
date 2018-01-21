@@ -6,6 +6,8 @@ Your sample code can be rendered on the page instantly, so the people who read y
 If he/she expands the demo box, the source code and description are shown there.
 Click the button `Jsfiddle` will be open with the code of this sample.
 
+![](https://ws4.sinaimg.cn/large/006tKfTcly1fnohhzxtuuj31kw0nz0w9.jpg)
+
 [Doc](https://angeltiva.github.io/bell-docsify/#/)
 
 This plugin is for Yox. For Yox, please use [bell-docsify](https://angeltiva.github.io/bell-docsify/#/)

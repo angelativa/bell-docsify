@@ -102,8 +102,19 @@ var DemoBlock = {
 Yox.component({
     DemoBlock: DemoBlock
 });
-
+var hashMap = {};
 var demoCreate = function demoCreate(code) {
+    window.addEventListener('hashchange', function () {
+        setTimeout(function () {
+            var map = hashMap[location.hash];
+            if (map) {
+                for (var i = 0; i < map.length; i++) {
+                    new Yox(map[i]);
+                }
+            }
+        }, 500);
+    });
+
     return function (hook, vm) {
         var id = 0;
         window.$docsify.markdown = {
@@ -112,7 +123,10 @@ var demoCreate = function demoCreate(code) {
                     id++;
                     var create = function create(number, code) {
                         setTimeout(function () {
-                            new Yox({
+                            if (!hashMap[location.hash]) {
+                                hashMap[location.hash] = [];
+                            }
+                            var str = {
                                 el: '#demo' + number,
                                 template: '\n                                        <div class="bell-demo-wrapper">\n                                            <DemoBlock code="{{code}}" number="{{number}}" />\n                                        </div>\n                                    ',
 
@@ -124,10 +138,12 @@ var demoCreate = function demoCreate(code) {
                                         number: number
                                     };
                                 }
-                            });
+                            };
+                            new Yox(str);
+                            hashMap[location.hash].push(str);
                         }, 500);
                     };
-                    create(id, _code);
+                    var a = create(id, _code);
                     return '<div id="demo' + id + '"></div>';
                 }
             }

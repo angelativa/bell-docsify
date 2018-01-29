@@ -22,6 +22,7 @@
     padding: 4px;
     color: #ccc;
     box-shadow: inset 0 -25px 30px #fff;
+    z-index: 0;
 }
 .bell-view-box-icon:hover {
     color: #4279F3;
@@ -72,6 +73,7 @@
     box-sizing: border-box;
     vertical-align: top;
     padding: 15px;
+    z-index: 1;
 }
 .bell-source {
     width: 50%;
@@ -120,6 +122,6 @@
     right: 0;
     top: 0;
     text-align: right;
-    z-index: 1;
+    z-index: 0;
     background-color: #fff;
 }

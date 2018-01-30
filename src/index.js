@@ -33,7 +33,7 @@ export let demoCreate = function (code) {
                                 var str = {
                                     el: '#demo' + number,
                                     template: `
-                                        <div class="bell-demo-wrapper">
+                                        <div class="bell-docsify-demo-wrapper">
                                             <DemoBlock code="{{code}}" number="{{number}}" />
                                         </div>
                                     `,

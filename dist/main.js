@@ -9,7 +9,7 @@
 
 var DemoBlock = {
 
-    template: '\n<div class="bell-view-box">\n\n    <div class="bell-header">\n        <span class="bell-button bell-text" on-click="goJsfiddle()">\n            Jsfiddle\n        </span>\n    </div>\n\n    <div class="bell-view bell-view-{{number}}">\n\n    </div>\n\n    <div class="bell-source">\n        <pre>\n            <code class="html hljs xml">\n                {{{source}}}\n            </code>\n        </pre>\n    </div>\n\n    {{#if isOpen}}\n        <i class="bell-icon bell-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>\n    {{else}}\n        <i class="bell-icon bell-view-box-icon bell-icon-ios-arrow-down" on-click="open()"></i>\n    {{/if}}\n</div>\n    ',
+    template: '\n<div class="bell-docsify-view-box">\n\n    <div class="bell-docsify-header">\n        <span class="bell-docsify-button bell-docsify-text" on-click="goJsfiddle()">\n            Jsfiddle\n        </span>\n    </div>\n\n    <div class="bell-docsify-view bell-docsify-view-{{number}}">\n\n    </div>\n\n    <div class="bell-docsify-source">\n        <pre>\n            <code class="html hljs xml">\n                {{{source}}}\n            </code>\n        </pre>\n    </div>\n\n    {{#if isOpen}}\n        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-up" on-click="close()"></i>\n    {{else}}\n        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-down" on-click="open()"></i>\n    {{/if}}\n</div>\n    ',
 
     propTypes: {
         code: {
@@ -94,7 +94,7 @@ var DemoBlock = {
             source: source.value
         });
         var html = me.formatCode(code);
-        html.el = '.bell-view-' + me.get('number');
+        html.el = '.bell-docsify-view-' + me.get('number');
         new Yox(html);
     }
 };
@@ -128,7 +128,7 @@ var demoCreate = function demoCreate(code) {
                             }
                             var str = {
                                 el: '#demo' + number,
-                                template: '\n                                        <div class="bell-demo-wrapper">\n                                            <DemoBlock code="{{code}}" number="{{number}}" />\n                                        </div>\n                                    ',
+                                template: '\n                                        <div class="bell-docsify-demo-wrapper">\n                                            <DemoBlock code="{{code}}" number="{{number}}" />\n                                        </div>\n                                    ',
 
                                 replace: true,
 

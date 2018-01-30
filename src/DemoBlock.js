@@ -6,19 +6,19 @@
 export default {
 
     template: `
-<div class="bell-view-box">
+<div class="bell-docsify-view-box">
 
-    <div class="bell-header">
-        <span class="bell-button bell-text" on-click="goJsfiddle()">
+    <div class="bell-docsify-header">
+        <span class="bell-docsify-button bell-docsify-text" on-click="goJsfiddle()">
             Jsfiddle
         </span>
     </div>
 
-    <div class="bell-view bell-view-{{number}}">
+    <div class="bell-docsify-view bell-docsify-view-{{number}}">
 
     </div>
 
-    <div class="bell-source">
+    <div class="bell-docsify-source">
         <pre>
             <code class="html hljs xml">
                 {{{source}}}
@@ -27,9 +27,9 @@ export default {
     </div>
 
     {{#if isOpen}}
-        <i class="bell-icon bell-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>
+        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-up" on-click="close()"></i>
     {{else}}
-        <i class="bell-icon bell-view-box-icon bell-icon-ios-arrow-down" on-click="open()"></i>
+        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-down" on-click="open()"></i>
     {{/if}}
 </div>
     `,
@@ -119,7 +119,7 @@ export default {
             source: source.value
         });
         var html = me.formatCode(code);
-        html.el = '.bell-view-' + me.get('number');
+        html.el = '.bell-docsify-view-' + me.get('number');
         new Yox(html);
     }
 }

@@ -17,14 +17,54 @@ bell-docsify
 2
 
     export default {
+        isViewFullBlock: true,
         template: `
             <div>
-                <Alert>222 An info prompt</Alert>
-                <Alert type="success">A success prompt</Alert>
-                <Alert type="warning">A warning prompt</Alert>
-                <Alert type="error">An error prompt</Alert>
+                <Layout>
+                    <Header>Header</Header>
+                    <Content>Content</Content>
+                    <Footer>Footer</Footer>
+                </Layout>
+                <br><br>
+                <Layout>
+                    <Header>Header</Header>
+                    <Layout>
+                        <Sider hide-trigger>Sider</Sider>
+                        <Content>Content</Content>
+                    </Layout>
+                    <Footer>Footer</Footer>
+                </Layout>
+                <br><br>
+                <Layout>
+                    <Header>Header</Header>
+                    <Layout>
+                        <Content>Content</Content>
+                        <Sider hide-trigger>Sider</Sider>
+                    </Layout>
+                    <Footer>Footer</Footer>
+                </Layout>
+                <br><br>
+                <Layout>
+                    <Sider hide-trigger>Sider</Sider>
+                    <Layout>
+                        <Header>Header</Header>
+                        <Content>Content</Content>
+                        <Footer>Footer</Footer>
+                    </Layout>
+                </Layout>
+                <br><br>
+                <Layout>
+                    <Header>Header</Header>
+                    <Layout>
+                        <Sider hide-trigger>Sider</Sider>
+                        <Content>Content</Content>
+                    </Layout>
+                </Layout>
             </div>
-        `
+        `,
+        data: {
+            isViewFullBlock: true
+        }
     }
 
 3

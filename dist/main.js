@@ -7,9 +7,15 @@
  * @author wangtianhua
  */
 
+// <div class="bell-docsify-header">
+//     <span class="bell-docsify-button bell-docsify-text" on-click="goJsfiddle()">
+//         Jsfiddle
+//     </span>
+// </div>
+
 var DemoBlock = {
 
-    template: '\n<div class="bell-docsify-view-box">\n\n    <div class="bell-docsify-header">\n        <span class="bell-docsify-button bell-docsify-text" on-click="goJsfiddle()">\n            Jsfiddle\n        </span>\n    </div>\n\n    <div class="bell-docsify-view bell-docsify-view-{{number}}">\n\n    </div>\n\n    <div class="bell-docsify-source">\n        <pre>\n            <code class="html hljs xml">\n                {{{source}}}\n            </code>\n        </pre>\n    </div>\n\n    {{#if isOpen}}\n        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-up" on-click="close()"></i>\n    {{else}}\n        <i class="bell-docsify-icon bell-docsify-view-box-icon bell-docsify-icon-ios-arrow-down" on-click="open()"></i>\n    {{/if}}\n</div>\n    ',
+    template: '\n        <div class="bell-docsify-view-box\n        {{#if isViewFullBlock}} bell-view-full-block{{/if}}\n        {{#if isOpen}} bell-box-open{{/if}}">\n\n            <div ref="docsifyView" class="bell-docsify-view bell-docsify-view-{{number}}">\n\n            </div>\n\n            <div class="bell-docsify-source">\n                <pre ref="docsifySource">\n                    <code class="html hljs xml">\n                        {{{source}}}\n                    </code>\n                </pre>\n            </div>\n\n            {{#if isOpen}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>\n            {{else}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-down" on-click="open()"></i>\n            {{/if}}\n        </div>\n    ',
 
     propTypes: {
         code: {
@@ -23,21 +29,32 @@ var DemoBlock = {
     data: function data() {
         return {
             source: '',
-            isOpen: false
+            isOpen: false,
+            isViewFullBlock: false
         };
     },
 
     methods: {
         formatCode: function formatCode(code) {
-            code = code.replace(/<\/?script>/g, '').trim();
+            var me = this;
             code = code.replace(/export\s*default/g, '').trim();
             code = new Function('return ' + code)();
+            me.set({
+                isViewFullBlock: code.isViewFullBlock
+            });
             return code;
         },
         open: function open() {
             var me = this;
             var container = me.$el;
-            container.style.maxHeight = container.getElementsByTagName('pre')[0].clientHeight + 'px';
+            var height;
+            var sourceHeight = me.$refs.docsifySource.clientHeight;
+            var viewHeight = 0;
+            if (me.get('isViewFullBlock')) {
+                viewHeight = me.$refs.docsifyView.children[0].clientHeight;
+            }
+            height = sourceHeight + viewHeight + 60;
+            container.style.maxHeight = height + 'px';
 
             me.set({
                 isOpen: true

@@ -15,7 +15,7 @@
 
 var DemoBlock = {
 
-    template: '\n        <div class="bell-docsify-view-box\n        {{#if isViewFullBlock}} bell-view-full-block{{/if}}\n        {{#if isOpen}} bell-box-open{{/if}}">\n\n            <div ref="docsifyView" class="bell-docsify-view bell-docsify-view-{{number}}">\n\n            </div>\n\n            <div class="bell-docsify-source">\n                <pre ref="docsifySource">\n                    <code class="html hljs xml">\n                        {{{source}}}\n                    </code>\n                </pre>\n            </div>\n\n            {{#if isOpen}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>\n            {{else}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-down" on-click="open()"></i>\n            {{/if}}\n        </div>\n    ',
+    template: '\n        <div class="bell-docsify-view-box\n        {{#if isViewFullBlock}} bell-view-full-block{{/if}}\n        {{#if isOpen}} bell-box-open{{/if}}">\n\n            <div ref="docsifyView" class="bell-docsify-view bell-docsify-view-{{number}}">\n            </div>\n\n            <div class="bell-docsify-source">\n                <pre ref="docsifySource">\n                    <code class="html hljs xml">\n                        {{{source}}}\n                    </code>\n                </pre>\n            </div>\n\n            {{#if isOpen}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>\n            {{else}}\n                <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-down" on-click="open()"></i>\n            {{/if}}\n        </div>\n    ',
 
     propTypes: {
         code: {
@@ -113,6 +113,11 @@ var DemoBlock = {
         var html = me.formatCode(code);
         html.el = '.bell-docsify-view-' + me.get('number');
         new Yox(html);
+
+        me.open();
+        Yox.nextTick(function () {
+            me.close();
+        });
     }
 };
 

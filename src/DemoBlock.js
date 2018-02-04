@@ -17,7 +17,6 @@ export default {
         {{#if isOpen}} bell-box-open{{/if}}">
 
             <div ref="docsifyView" class="bell-docsify-view bell-docsify-view-{{number}}">
-
             </div>
 
             <div class="bell-docsify-source">
@@ -134,5 +133,10 @@ export default {
         var html = me.formatCode(code);
         html.el = '.bell-docsify-view-' + me.get('number');
         new Yox(html);
+
+        me.open();
+        Yox.nextTick(function () {
+            me.close();
+        });
     }
 }

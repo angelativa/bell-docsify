@@ -1,6 +1,43 @@
 # bell-docsify
 bell-docsify
 
+
+> isViewFullBlock
+
+    export default {
+        isViewFullBlock: true,
+        template: `
+            <div>
+                <Layout style="height: 400px;">
+                    <Sider collapsible>
+                        <Menu mode="vertical" active-name="1-2" theme="dark">
+                            <MenuItem name="1-1">
+                                <span style="display: none;">
+                                    我
+                                </span>
+                                <span>Option 1</span>
+                            </MenuItem>
+                            <MenuItem name="1-2">
+                                <Icon type="search"></Icon>
+                                <span>Option 2</span>
+                            </MenuItem>
+                            <MenuItem name="1-3">
+                                <Icon type="settings"></Icon>
+                                <span>Option 3</span>
+                            </MenuItem>
+                        </Menu>
+                    </Sider>
+                    <Content>
+                        <Header style="background-color: #fff; boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);"></Header>
+                        <Content style="padding: 0 16px 16px">
+                            Content
+                        </Content>
+                    </Content>
+                </Layout>
+            </div>
+        `,
+    }
+
 1
 
     export default {

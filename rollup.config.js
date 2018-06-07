@@ -19,5 +19,5 @@ export default {
     }),
     commonjs()
     ],
-    dest: 'dist/main.js'
+    dest: 'dist/docsify.js'
 }

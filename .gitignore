@@ -1,7 +1,6 @@
 
 node_modules/
 edp-webserver-config.js
-edp-build-config.js
 module.conf
 package-lock.json
 router.js

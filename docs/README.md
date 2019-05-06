@@ -1,196 +1,114 @@
 # bell-docsify
-bell-docsify
-
 
 > isViewFullBlock
 
     export default {
-        isViewFullBlock: true,
-        template: `
-            <div>
-                <Layout style="height: 400px;">
-                    <Sider collapsible>
-                        <Menu mode="vertical" active-name="1-2" theme="dark">
-                            <MenuItem name="1-1">
-                                <span style="display: none;">
-                                    我
-                                </span>
-                                <span>Option 1</span>
-                            </MenuItem>
-                            <MenuItem name="1-2">
-                                <Icon type="search"></Icon>
-                                <span>Option 2</span>
-                            </MenuItem>
-                            <MenuItem name="1-3">
-                                <Icon type="settings"></Icon>
-                                <span>Option 3</span>
-                            </MenuItem>
-                        </Menu>
-                    </Sider>
-                    <Content>
-                        <Header style="background-color: #fff; boxShadow: 0 2px 3px 2px rgba(0,0,0,.1);"></Header>
-                        <Content style="padding: 0 16px 16px">
-                            Content
-                        </Content>
-                    </Content>
-                </Layout>
-            </div>
-        `,
+      isViewFullBlock: true,
+      height: 400,
+      template: `
+        <Layout className="layout-demo-wrapper">
+          <Header>
+            <template slot="left">
+              <div class="layout-logo"></div>
+            </template>
+            <Menu mode="horizontal" theme="dark" active-name="1">
+              <MenuItem name="1">
+                <Icon style="margin-right: 6px;" type="navigate"></Icon>
+                Item 1
+              </MenuItem>
+              <MenuItem name="2">
+                <Icon style="margin-right: 6px;" type="keypad"></Icon>
+                Item 2
+              </MenuItem>
+              <MenuItem name="3">
+                <Icon style="margin-right: 6px;" type="analytics"></Icon>
+                Item 3
+              </MenuItem>
+              <MenuItem name="4">
+                <Icon style="margin-right: 6px;" type="paper"></Icon>
+                Item 4
+              </MenuItem>
+            </Menu>
+          </Header>
+          <Layout>
+            <Sider>
+              <Menu mode="inline" theme="dark" active-name="1">
+                <MenuItem name="1">
+                  <Icon style="margin-right: 6px;" type="navigate"></Icon>
+                  Item 1
+                </MenuItem>
+                <MenuItem name="2">
+                  <Icon style="margin-right: 6px;" type="keypad"></Icon>
+                  Item 2
+                </MenuItem>
+                <MenuItem name="3">
+                  <Icon style="margin-right: 6px;" type="analytics"></Icon>
+                  Item 3
+                </MenuItem>
+                <MenuItem name="4">
+                  <Icon style="margin-right: 6px;" type="paper"></Icon>
+                  Item 4
+                </MenuItem>
+              </Menu>
+            </Sider>
+            <Layout style="padding: 0 24px 24px">
+              <Breadcrumb>
+                <BreadcrumbItem>Home</BreadcrumbItem>
+                <BreadcrumbItem>Components</BreadcrumbItem>
+                <BreadcrumbItem>Layout</BreadcrumbItem>
+              </Breadcrumb>
+              <Content style="padding: 24px; min-height: 280px; background: #fff;">
+                Content
+              </Content>
+            </Layout>
+          </Layout>
+        </Layout>
+      `,
     }
 
-1
+> card
 
     export default {
-        template: `
-            <div>
-                <Alert>An info prompt</Alert>
-                <Alert type="success">A success prompt</Alert>
-                <Alert type="warning">A warning prompt</Alert>
-                <Alert type="error">An error prompt</Alert>
-            </div>
-        `
-    }
+      height: 400,
+      template: `
+        <div>
+          <Card>
+            <CardHeader>
+              <template slot="title">
+                Myron Avatar
+              </template>
 
-2
+              <template slot="subTitle">
+                sub title
+              </template>
 
-    export default {
-        isViewFullBlock: true,
-        template: `
-            <div>
-                <Layout>
-                    <Header>Header</Header>
-                    <Content>Content</Content>
-                    <Footer>Footer</Footer>
-                </Layout>
-                <br><br>
-                <Layout>
-                    <Header>Header</Header>
-                    <Layout>
-                        <Sider hide-trigger>Sider</Sider>
-                        <Content>Content</Content>
-                    </Layout>
-                    <Footer>Footer</Footer>
-                </Layout>
-                <br><br>
-                <Layout>
-                    <Header>Header</Header>
-                    <Layout>
-                        <Content>Content</Content>
-                        <Sider hide-trigger>Sider</Sider>
-                    </Layout>
-                    <Footer>Footer</Footer>
-                </Layout>
-                <br><br>
-                <Layout>
-                    <Sider hide-trigger>Sider</Sider>
-                    <Layout>
-                        <Header>Header</Header>
-                        <Content>Content</Content>
-                        <Footer>Footer</Footer>
-                    </Layout>
-                </Layout>
-                <br><br>
-                <Layout>
-                    <Header>Header</Header>
-                    <Layout>
-                        <Sider hide-trigger>Sider</Sider>
-                        <Content>Content</Content>
-                    </Layout>
-                </Layout>
-            </div>
-        `,
-        data: {
-            isViewFullBlock: true
-        }
-    }
+              <template slot="avatar">
+                <Avatar src="https://avatars0.githubusercontent.com/u/17703135?s=400&u=612ef7e55a4394c89e2f53f8f360c9b3b2336ace&v=4" ></Avatar>
+              </template>
+            </CardHeader>
 
-3
+            <CardMedia title="Image Title" subTitle="Image Sub Title">
+              <img src="https://avatars0.githubusercontent.com/u/17703135?s=400&u=612ef7e55a4394c89e2f53f8f360c9b3b2336ace&v=4" />
+            </CardMedia>
 
-    export default {
-        template: `
-            <div style="position: absolute;">
-                <div>
-                    <Tooltip placement="top-start" content="这里是提示文字">
-                        <Button>上左</Button>
-                    </Tooltip>
-                    <Tooltip placement="top" content="这里是提示文字">
-                        <Button>上</Button>
-                    </Tooltip>
-                    <Tooltip placement="top-end" content="这里是提示文字">
-                        <Button>上右</Button>
-                    </Tooltip>
-                </div>
-                <br><br>
-                <div>
-                    <Tooltip placement="bottom-start" content="这里是提示文字">
-                        <Button>下左</Button>
-                    </Tooltip>
-                    <Tooltip placement="bottom" content="这里是提示文字">
-                        <Button>下</Button>
-                    </Tooltip>
-                    <Tooltip placement="bottom-end" content="这里是提示文字">
-                        <Button>下右</Button>
-                    </Tooltip>
-                </div>
-                <br><br>
+            <CardTitle title="Content Title" subTitle="Content Title"/>
 
-                <div>
-                    <Tooltip placement="right-start" content="这里是提示文字">
-                        <Button>右上</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                    <Tooltip placement="right" content="这里是提示文字">
-                        <Button>右</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                    <Tooltip placement="right-end" content="这里是提示文字">
-                        <Button>右下</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                    <br><br>
-                    <Tooltip placement="left-start" content="这里是提示文字">
-                        <Button>左上</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                    <Tooltip placement="left" content="这里是提示文字">
-                        <Button>左</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                    <Tooltip placement="left-end" content="这里是提示文字">
-                        <Button>左下</Button>
-                        <TooltipItem>
-                            <div slot="content">
-                                <p>显示多行信息</p>
-                                <p><i>可以自定义样式</i></p>
-                            </div>
-                        </TooltipItem>
-                    </Tooltip>
-                </div>
-            </div>
-        `
+            <CardText>
+              散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+              调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+              似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+              找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+            </CardText>
+
+            <CardActions>
+              <Button>
+                Action1
+              </Button>
+              <Button>
+                Action2
+              </Button>
+            </CardActions>
+          </Card>
+        </div>
+      `
     }

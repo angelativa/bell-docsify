@@ -13,6 +13,7 @@
 }
 
 .bell-view-full-block .bell-docsify-view {
+  height: 100%;
   width: 100%;
 }
   

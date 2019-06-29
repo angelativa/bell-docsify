@@ -22,12 +22,6 @@
         </pre>
       </div>
 
-      <div class="bell-docsify-header">
-        <span class="bell-docsify-button bell-docsify-text" on-click="goJsfiddle()">
-          Jsfiddle
-        </span>
-      </div>
-
       {{#if isOpen}}
         <i class="bell-icon bell-docsify-view-box-icon bell-icon-ios-arrow-up" on-click="close()"></i>
       {{else}}
@@ -56,7 +50,7 @@
     },
 
     methods: {
-      formatCode (code) {
+      formatCode(code) {
 
         let codeStr = code.replace(/export\s*default/g, '').trim();
         let codeFnc = new Function('return ' + codeStr)();
@@ -68,16 +62,20 @@
 
         return codeFnc
       },
-      open () {
+      open() {
         let me = this;
-        let viewHeight = me.get('isViewFullBlock') ? me.$refs.docsifyView.children[ 0 ].clientHeight : 0;
+        let viewHeight = me.get('isViewFullBlock')
+          ? me.$refs.docsifyView.children[ 0 ].clientHeight : 0;
         let height = me.$refs.docsifySource.clientHeight + viewHeight + 60;
         me.$el.style.height = height <= 60 ? '250px' : `${height}px`;
         me.set('isOpen', true);
       },
-      close () {
+      close() {
         this.$el.style.height = `${this.get('height') || 250}px`;
         this.set('isOpen', false);
+      },
+      copyCode() {
+        console.log(this.get('sourceCode'));
       },
       goJsfiddle () {
         var jsResources = `<script src="https://unpkg.com/yox@1.0.0-alpha.17/dist/standard/dev/yox.js"></script>`;
@@ -96,7 +94,7 @@
         form.method = 'post';
         form.action = 'https://jsfiddle.net/api/post/library/pure/';
         form.target = '_blank';
-        
+
         for (let name in data) {
           node.name = name;
           node.value = data[ name ].toString();
@@ -121,7 +119,7 @@
       });
       html.el = '.bell-docsify-view-' + me.get('number');
       new Yox(html);
-      
+
       me.open();
       Yox.nextTick(function () {
         me.close();

@@ -1,5 +1,64 @@
 # bell-docsify
 
+
+```js
+export default {
+  isViewFullBlock: true,
+  height: 400,
+  data: function () {
+    return {
+      theme: 'dark'
+    }
+  },
+  template: `
+    <div class="bell-template">
+      <Menu theme="{{theme}}" activeName="1">
+        <MenuItem name="1">
+          <Icon name="paper"></Icon>
+          内容管理
+        </MenuItem>
+        <MenuItem name="2">
+          <Icon name="people"></Icon>
+          用户管理
+        </MenuItem>
+        <Submenu name="3">
+          <template slot="title">
+            <Icon name="stats" />
+            统计分析（子菜单）
+          </template>
+          <MenuGroup title="使用">
+            <MenuItem name="3-1">新增和启动</MenuItem>
+            <MenuItem name="3-2">活跃分析</MenuItem>
+            <MenuItem name="3-3">时段分析</MenuItem>
+          </MenuGroup>
+          <MenuGroup title="留存">
+            <MenuItem name="3-4">用户留存</MenuItem>
+            <MenuItem name="3-5">流失用户</MenuItem>
+          </MenuGroup>
+        </Submenu>
+        <MenuItem name="4">
+          <Icon name="settings"></Icon>
+          <a href="https://yoxjs.github.io/yox/#/ts" target="_blank">
+            综合设置（外链）
+          </a>
+        </MenuItem>
+      </Menu>
+      <br>
+      <p>切换主题</p>
+      <RadioGroup model="theme" type="info">
+        <Radio label="light" value="light"></Radio>
+        <Radio label="dark" value="dark" checked></Radio>
+      </RadioGroup>
+      <style>
+        .bell-icon {
+          margin-right: 6px;
+        }
+      </style>
+    </div>
+  `,
+}
+```
+
 > isViewFullBlock
 
     export default {

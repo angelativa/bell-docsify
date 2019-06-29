@@ -1,3 +1,6 @@
+.bell-docsify-demo-wrapper .bell-docsify-view-box ul {
+  padding: 0;
+}
 .bell-docsify-view-box {
   position: relative;
   box-sizing: border-box;
@@ -15,7 +18,7 @@
 .bell-view-full-block .bell-docsify-view {
   width: 100%;
 }
-  
+
 .bell-docsify-view {
   padding: 15px;
   z-index: 1;
@@ -85,7 +88,8 @@
   right: 0;
   text-align: center;
   cursor: pointer;
-  height: 15px;
+  height: 20px;
+  font-size: 20px;
   color: #ccc;
   box-shadow: inset 0 -25px 30px #fff;
   z-index: 0;
@@ -140,10 +144,15 @@
   top: 0;
   text-align: right;
   z-index: 1;
-  background-color: #fff;
   padding: 10px;
   font-size: 12px;
+  opacity: 0;
+  transition: opacity .3s;
 }
 .bell-docsify-header:hover {
   color: #f90;
+}
+
+.bell-docsify-view-box:hover .bell-docsify-header {
+  opacity: 1;
 }

@@ -1,0 +1,7 @@
+
+
+      <div class="bell-docsify-header">
+        <Button borderType="none" size="small" on-click="copyCode()">
+          Copy
+        </Button>
+      </div>
